@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: client-deployment
+spec:
+  replicas: 1 #changed from 5 to 1
+  selector:   
+    matchLabels:
+      component: web
+  template: 
+    metadata: 
+      labels: 
+        component: web
+    spec: 
+      containers: 
+        - name: client
+          image: stephengrider/multi-client #set to multi-client 
+          ports:
+            - containerPort: 3000 #changed to port 3000 again
